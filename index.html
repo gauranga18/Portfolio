@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is Saurav</title>
+    <link rel="icon" type="image/png" href="/assets/pfp.gif" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+     <button id="backToTop" title="Back to top">↑</button>
+<div id="progress-bar"></div>
+<!-- Navbar component -->
+<nav id="desktop-nav">
+      <div class="logo">Saurav</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Saurav</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Saurav</h1>
+        <!-- <p class="section__text__p2">I'm a Developer</p> -->
+        <p class="section__text__p2" id="greeting"></p> <!-- 👈 Greeting text goes here -->
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume-example.pdf')"
+          >
+            My Resume
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact
+          </button>
+        </div>
+        <div id="socials-container">
+          <a href="https://www.linkedin.com/in/saurav-jyoti/" target="_blank" class="social-link">
+            LinkedIn
+          </a>
+          <a href="https://github.com/gauranga18" target="_blank" class="social-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <h3>Education</h3>
+              <p>BCA Bachelors Degree</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              Hi I’m Saurav, 20.
+I’m currently learning systems programming with C and Linux, exploring low-level concepts and performance-driven software.
+In the past, I’ve worked with React and Spring Boot, building full-stack projects.
+I love creating things that are fast, clean, and meaningful 
+            </p>
+          </div>
+        </div>
+      </div>
+      <a href="#experience" class="arrow-link">▼</a>
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+    <div class="experience-details-container">
+  <div class="about-containers">
+
+    <!-- Frontend -->
+    <div class="details-container">
+      <h2 class="experience-sub-title">Frontend Development</h2>
+      <div class="article-container">
+        <article><div><h3>HTML</h3></div></article>
+        <article><div><h3>CSS</h3></div></article>
+        <article><div><h3>JS</h3></div></article>
+        <article><div><h3>React</h3></div></article>
+      </div>
+    </div>
+
+    <!-- Backend -->
+    <div class="details-container">
+      <h2 class="experience-sub-title">Backend Development</h2>
+      <div class="article-container">
+        <article><div><h3>Spring Boot</h3></div></article>
+        <article><div><h3>MySQL</h3></div></article>
+        <article><div><h3>Git</h3></div></article>
+      </div>
+    </div>
+
+    <!-- Systems Programming -->
+    <div class="details-container">
+      <h2 class="experience-sub-title">Systems Programming</h2>
+      <div class="article-container">
+        <article><div><h3>C</h3></div></article>
+        <article><div><h3>Linux</h3></div></article>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      <a href="#projects" class="arrow">▼</a>
+    </section>
+<section id="projects">
+  <div class="experience-details-container">
+    <!-- Left side text -->
+    <div class="project-text">
+      <p class="section__text__p1">My Projects are available at </p>
+      <h1 class="title">Vertex</h1>
+    </div>
+
+    <!-- Right side project container -->
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <div class="article-container">
+          <img
+            src="./assets/Vertex-logo.png"
+            alt="Project 1"
+            class="project-img"
+          />
+        </div>
+        <h2 class="experience-sub-title project-title">Project Vault</h2>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2 project-btn"
+            onclick="location.href='https://vertex-olive-eight.vercel.app/'"
+          >
+            Live Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#contact" class="arrow">▼</a>
+</section>
+
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <p><a href="mailto:sauravjyotikalita56@gmail.com">📧 sauravjyotikalita56@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <p><a href="https://www.linkedin.com/in/saurav-jyoti/">💼 LinkedIn</a></p>
+        </div>
+      </div>
+<section id="minecraft-console">
+  <!-- Console Toggle Button (Fixed position at bottom right) -->
+  <button id="console-toggle" class="console-icon-btn" aria-label="Open Console">
+    <img src="/assets/console-icon.png" alt="Console" />
+  </button>
+  
+  <!-- Console Window (Hidden by default) -->
+  <div id="console-window" class="console-hidden">
+    <div class="console-header">
+      <span class="console-title">This is My Console</span>
+      <button id="console-close" class="console-icon-btn" aria-label="Close Console">
+        <img src="/assets/close-button-toggle.png" alt="Close" />
+      </button>
+    </div>
+    <div id="console"></div>
+    <input type="text" id="console-input" placeholder="Type a command..." />
+  </div>
+</section>
+
+    </section>
+    <footer>
+      <p>Copyright &#169; 2025 Saurav Jyoti Kalita. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
