@@ -1,116 +1,720 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
-  <title>Saurav</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css">
+
+  <title>Saurav Jyoti Kalita — Retro Terminal Portfolio</title>
+  <meta name="description" content="Retro terminal-style portfolio of Saurav Jyoti Kalita — systems programmer building developer infrastructure with C, Linux and backend tooling." />
+
+  <!-- Fonts: monospace stack with IBM Plex Mono / Source Code Pro preference -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Critical minimal styles (avoid FOUC, keep tiny) -->
+  <style>
+    :root {
+      --font-mono-primary: "IBM Plex Mono", "Source Code Pro", "Courier Prime", "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --font-mono-secondary: "Courier Prime", "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --gray-0: #000000;
+      --gray-1: #111111;
+      --gray-2: #222222;
+      --gray-3: #333333;
+      --gray-4: #555555;
+      --gray-5: #777777;
+      --gray-6: #999999;
+      --gray-7: #cccccc;
+      --gray-8: #f8f8f8;
+      --color-paper-bg: #f8f8f8;
+      --color-paper-ink: #000000;
+      --color-terminal-bg: #0a0a0a;
+      --color-terminal-green: #00ff00;
+      --color-terminal-amber: #ffb000;
+      --border-radius-panel: 0;
+      --grid-unit: 8px;
+    }
+
+    html {
+      box-sizing: border-box;
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-mono-primary);
+      background-color: #0a0a0a;
+      color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .no-js-notice {
+      padding: 0.75rem 1rem;
+      background: #000;
+      color: #f8f8f8;
+      font-family: var(--font-mono-secondary);
+      font-size: 0.75rem;
+      border-bottom: 2px double #666;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+
+  <!-- Main stylesheet (kept lean; can be minified in build) -->
+  <link rel="stylesheet" href="src/assets/css/main.css" />
 </head>
 
-<body>
+<body data-weather-city="Guwahati,IN">
+  <!-- Fallback when JavaScript is disabled -->
+  <noscript>
+    <div class="no-js-notice" role="status" aria-live="polite">
+      JS DISABLED :: Falling back to OS color scheme. Theme toggle and command palette are unavailable.
+    </div>
+  </noscript>
 
-  <!-- Navigation -->
-  <nav>
-    <strong>Saurav</strong> —
-    <a href="#about">About</a> |
-    <a href="#projects">Projects</a> |
-    <a href="#experience">Experience</a> |
-    <a href="#contact">Contact</a>
-  </nav>
+  <a href="#main" class="skip-link">SKIP TO CONTENT</a>
 
+  <div
+    id="boot-screen"
+    class="boot-screen"
+    role="status"
+    aria-live="polite"
+    aria-label="Portfolio startup sequence"
+  >
+    <div class="boot-screen-inner">
+      <div class="boot-screen-header">
+        VERTEX-OS // PORTFOLIO NODE
+      </div>
+      <pre id="boot-log" class="boot-log">
+      </pre>
+      <p class="boot-screen-skip">
+        <button
+          id="boot-skip"
+          class="boot-skip-button"
+          type="button"
+        >
+          SKIP BOOT [ESC]
+        </button>
+      </p>
+    </div>
+  </div>
 
+  <div class="page-grid crt-grid">
+    <header class="site-header" role="banner">
+      <div class="header-left">
+        <div class="site-ident">
+          <span class="site-ident-label">USER</span>
+          <span class="site-ident-value">SAURAV&nbsp;JYOTI&nbsp;KALITA</span>
+        </div>
+        <div class="site-breadcrumbs" aria-label="Breadcrumb">
+          <span class="path-root" data-key="breadcrumb">~</span>
+          <span class="path-sep">/</span>
+          <span class="path-segment">home</span>
+          <span class="path-sep">/</span>
+          <span class="path-segment path-segment-active">portfolio</span>
+        </div>
+      </div>
 
-  <!-- Hero -->
-  <section id="home">
-    <h1>Saurav</h1>
-    <p>Systems programmer building developer infrastructure.</p>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="command-palette-trigger" type="button" aria-haspopup="dialog" aria-controls="command-palette" aria-label="Open command palette (Ctrl+K)">
+          CTRL+P
+          <span class="cursor-block" aria-hidden="true">█</span>
+        </button>
+        <ul class="site-nav-list">
+          <li><a href="#terminal-home">HOME</a></li>
+          <li><a href="#about">/BIN/ABOUT</a></li>
+          <li><a href="#projects">/VAR/PROJECTS</a></li>
+          <li><a href="#skills">/ETC/SKILLS</a></li>
+          <li><a href="#contact">/DEV/CONTACT</a></li>
+        </ul>
+      </nav>
 
-    <p>
-      <a href="./assets/resume-example.pdf">Resume</a> |
-      <a href="https://github.com/gauranga18" target="_blank">GitHub</a> |
-      <a href="https://www.linkedin.com/in/saurav-jyoti/" target="_blank">LinkedIn</a>
-    </p>
-  </section>
+      <div class="theme-controls" aria-label="Display controls">
+        <div class="theme-switch-wrapper">
+          <span class="theme-label" id="theme-label">MODE</span>
+          <button
+            id="theme-toggle"
+            class="theme-toggle-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-labelledby="theme-label"
+          >
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-knob">
+                <span class="toggle-indicator toggle-indicator-light">PAPER</span>
+                <span class="toggle-indicator toggle-indicator-dark">CRT</span>
+              </span>
+            </span>
+            <span class="toggle-led toggle-led-light" aria-hidden="true"></span>
+            <span class="toggle-led toggle-led-dark" aria-hidden="true"></span>
+          </button>
+        </div>
 
-  
+        <button
+          id="scanline-toggle"
+          class="scanline-toggle"
+          type="button"
+          aria-pressed="false"
+        >
+          SCANLINES
+          <span class="cursor-inline" aria-hidden="true">▌</span>
+        </button>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About</h2>
+        <div id="theme-status" class="visually-hidden" aria-live="polite"></div>
+      </div>
+    </header>
 
-    <p>
-      I’m Saurav, a final-year BCA student focused on systems programming, Linux,
-      and backend infrastructure.
-    </p>
+    <main id="main" class="site-main" tabindex="-1">
+      <!-- TERMINAL / HOME -->
+      <section id="terminal-home" class="panel panel-primary" aria-labelledby="terminal-home-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔════════════════════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h1 id="terminal-home-heading" class="terminal-title">
+            ╔═ SAURAV&nbsp;JYOTI&nbsp;KALITA ═╗
+          </h1>
+          <p class="terminal-subtitle">
+            SYSTEMS PROGRAMMER :: DEVELOPER INFRASTRUCTURE • C • LINUX • BACKENDS
+          </p>
 
-    <p>
-      I build tools in C and work close to the operating system — process
-      management, filesystems, containers, and automation.  
-      In the past I worked with React and Spring Boot, but now I’m going deep into
-      performance-driven software.
-    </p>
-  </section>
+          <div class="terminal-banner" aria-hidden="true" data-key="banner" data-key-hover="true">
+            <pre>
+  .------..------..------..------..------..------.
+|S.--. ||A.--. ||U.--. ||R.--. ||A.--. ||V.--. |
+| :/\: || (\/) || (\/) || :(): || (\/) || :(): |
+| :\/: || :\/: || :\/: || ()() || :\/: || ()() |
+| '--'S|| '--'A|| '--'U|| '--'R|| '--'A|| '--'V|
+`------'`------'`------'`------'`------'`------'
+            </pre>
+          </div>
 
+          <p class="terminal-greeting" id="terminal-greeting" data-default-greeting="WELCOME OPERATOR.">
+            WELCOME OPERATOR.
+          </p>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
+          <p class="terminal-summary">
+            EXEC SUMMARY :: I design and build small, reliable tools for developers —
+            process supervisors, deployment CLIs and self-hosted infrastructure that run
+            cleanly on Linux.
+          </p>
 
-    <p><strong>DevVault</strong><br />
-    Self-hosted developer infrastructure for deploying Git repositories.<br />
-    Tech: C, Linux, Docker<br />
-    <a href="https://github.com/gauranga18" target="_blank">GitHub</a>
-    </p>
+          <div class="terminal-actions">
+            <a class="btn btn-primary" href="./assets/resume-example.pdf" download>
+              DOWNLOAD RESUME.TXT
+              <span class="cursor-inline" aria-hidden="true">█</span>
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/gauranga18" target="_blank" rel="noreferrer">
+              OPEN GITHUB://GAURANGA18
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/saurav-jyoti/" target="_blank" rel="noreferrer">
+              DIAL LINKEDIN://SAURAV-JYOTI
+            </a>
+          </div>
 
-    <p><strong>Forge CLI</strong><br />
-    Command-line tool to clone, build and deploy Dockerized applications.<br />
-    Tech: C, Shell, Git<br />
-    <a href="https://github.com/gauranga18" target="_blank">GitHub</a>
-    </p>
+          <div class="system-monitor" aria-label="Session status panel">
+            <div class="system-monitor-line">
+              <span class="system-monitor-label">CPU USAGE:</span>
+              <span id="sys-cpu-bar" class="system-monitor-bar">▱▱▱▱▱▱▱▱▱▱</span>
+              <span id="sys-cpu-text">0%</span>
+            </div>
+            <div class="system-monitor-line">
+              <span class="system-monitor-label">PROJECT LOAD:</span>
+              <span id="sys-mem-text">0.0MB / 8MB</span>
+            </div>
+            <div class="system-monitor-line">
+              <span class="system-monitor-label">SESSION DURATION:</span>
+              <span id="sys-uptime">00:00:00</span>
+            </div>
+            <div class="system-monitor-line">
+              <span class="system-monitor-label">INBOUND CONNECTIONS:</span>
+              <span id="sys-connections">1 (human)</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
 
-    <p><strong>Vertex</strong><br />
-    Personal project vault and portfolio hub.<br />
-    <a href="https://vertex-olive-eight.vercel.app/" target="_blank">Live demo</a>
-    </p>
-  </section>
+      <!-- WEATHER /USR/WEATHER -->
+      <section id="weather" class="panel" aria-labelledby="weather-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /USR/WEATHER ═════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="weather-heading" class="panel-heading">TERMINAL WEATHER REPORT</h2>
+          <div class="weather-bulletin">
+            <pre id="weather-ascii" class="weather-ascii" aria-hidden="true">
+   .--.
+.-(    ).
+(___.__)__)
 
- 
+            </pre>
+            <div class="weather-lines">
+              <p id="weather-station">STATION: INITIALIZING...</p>
+              <p id="weather-conditions">
+                CURRENT CONDITIONS: PARTLY CLOUDY WITH CHANCE OF BUGS
+              </p>
+              <p id="weather-temp">
+                TEMP: --°C  (KERNEL FEELS LIKE --°C)
+              </p>
+              <p id="weather-pressure">
+                PRESSURE: ---- hPa   TREND: →
+              </p>
+              <p id="weather-coding">
+                CODING WEATHER: CALIBRATING...
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
 
-  <!-- Experience -->
-  <section id="experience">
-    <h2>Experience & Skills</h2>
+      <!-- /BIN/ABOUT -->
+      <section id="about" class="panel" aria-labelledby="about-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /BIN/ABOUT ═══════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="about-heading" class="panel-heading">ABOUT(1)</h2>
 
-    <p><strong>Systems</strong><br />
-    C, Linux, Bash, Git, process management, file systems, CLI tools
-    </p>
+          <p>
+            I am <span class="highlight">Saurav</span>, a final-year BCA student focused on
+            systems programming and developer infrastructure.
+          </p>
+          <p>
+            I work mainly in <span class="highlight">C</span> and shell on Linux — processes,
+            filesystems, containers and automation that make environments repeatable and
+            failures easier to debug.
+          </p>
+          <p>
+            Earlier I shipped full‑stack apps with <span class="highlight">React</span> and
+            <span class="highlight">Spring Boot</span>; now I am focused on low-level,
+            performance-driven tooling and platform work.
+          </p>
 
-    <p><strong>Backend</strong><br />
-    Spring Boot, MySQL, REST APIs
-    </p>
+          <div class="about-timeline" aria-label="Work and learning timeline">
+            <pre aria-hidden="true">
+~/history
+├── 2022/            # Web foundations
+│   ├── html-css/
+│   └── spring-boot-apis/
+├── 2023/            # Full‑stack experimentation
+│   ├── react-frontends/
+│   └── mysql-backed-services/
+└── 2024-/           # Systems & infra focus
+    ├── c-tooling/
+    ├── linux-automation/
+    └── dev-infra/   # where I want to live
+            </pre>
+            <div class="about-timeline-text">
+              <p>
+                Currently interested in: repeatable bare-metal deployments, small debuggable
+                services, and tooling that keeps infrastructure simple for the teams that
+                depend on it.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
 
-    <p><strong>Frontend</strong><br />
-    HTML, CSS, JavaScript, React
-    </p>
-  </section>
+      <!-- /VAR/PROJECTS -->
+      <section id="projects" class="panel" aria-labelledby="projects-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /VAR/PROJECTS ════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="projects-heading" class="panel-heading">PROJECTS(5)</h2>
 
- 
+          <div class="projects-grid" role="list">
+            <article class="punch-card" role="listitem" data-key="devvault">
+              <header class="punch-card-header">
+                <div class="punch-card-label">DEV/INFRA</div>
+                <h3 class="punch-card-title">DevVault</h3>
+                <p class="punch-card-subtitle">SELF-HOSTED DEVELOPER INFRASTRUCTURE</p>
+              </header>
+              <div class="punch-card-body">
+                <p>
+                  Self-hosted platform that turns Git repositories into long-running services
+                  on a single Linux host. Minimal moving parts, explicit configuration and
+                  readable logs instead of magic.
+                </p>
+                <dl class="punch-card-meta">
+                  <div>
+                    <dt>STACK</dt>
+                    <dd>C, Linux, Docker, Bash</dd>
+                  </div>
+                  <div>
+                    <dt>ROLE</dt>
+                    <dd>System design, process supervision, deployment pipeline</dd>
+                  </div>
+                </dl>
+              </div>
+              <footer class="punch-card-footer">
+                <a href="https://github.com/gauranga18" target="_blank" rel="noreferrer">GIT://GAURANGA18/DEVVAULT</a>
+              </footer>
+            </article>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
+            <article class="punch-card" role="listitem">
+              <header class="punch-card-header">
+                <div class="punch-card-label">CLI/TOOLS</div>
+                <h3 class="punch-card-title">Forge CLI</h3>
+                <p class="punch-card-subtitle">DOCKERIZED APP LIFECYCLE IN ONE COMMAND</p>
+              </header>
+              <div class="punch-card-body">
+                <p>
+                  CLI that clones, builds and deploys Dockerized applications from a single
+                  command. Standardizes workflows across repositories without hiding what
+                  actually runs on the machine.
+                </p>
+                <dl class="punch-card-meta">
+                  <div>
+                    <dt>STACK</dt>
+                    <dd>C, Shell, Git, Docker</dd>
+                  </div>
+                  <div>
+                    <dt>FOCUS</dt>
+                    <dd>Idempotent operations, readable logs, robust error handling</dd>
+                  </div>
+                </dl>
+              </div>
+              <footer class="punch-card-footer">
+                <a href="https://github.com/gauranga18" target="_blank" rel="noreferrer">GIT://GAURANGA18/FORGE-CLI</a>
+              </footer>
+            </article>
 
-    <p>
-      Email: <a href="mailto:sauravjyotikalita56@gmail.com">sauravjyotikalita56@gmail.com</a><br />
-      GitHub: <a href="https://github.com/gauranga18">github.com/gauranga18</a><br />
-      LinkedIn: <a href="https://www.linkedin.com/in/saurav-jyoti/">linkedin.com/in/saurav-jyoti</a>
-    </p>
-  </section>
+            <article class="punch-card" role="listitem">
+              <header class="punch-card-header">
+                <div class="punch-card-label">PORTFOLIO</div>
+                <h3 class="punch-card-title">Vertex</h3>
+                <p class="punch-card-subtitle">PERSONAL PROJECT VAULT</p>
+              </header>
+              <div class="punch-card-body">
+                <p>
+                  Personal index for projects and experiments with stable URLs and metadata.
+                  Built as a playground for design systems and deployment pipelines.
+                </p>
+                <dl class="punch-card-meta">
+                  <div>
+                    <dt>STACK</dt>
+                    <dd>TypeScript, React, modern CSS</dd>
+                  </div>
+                  <div>
+                    <dt>LINK</dt>
+                    <dd>
+                      <a href="https://vertex-olive-eight.vercel.app/" target="_blank" rel="noreferrer">
+                        HTTPS://VERTEX-OLIVE-EIGHT.VERCEL.APP
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <footer class="punch-card-footer">
+                <span>STATUS: ACTIVE DEVELOPMENT</span>
+              </footer>
+            </article>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
 
+      <!-- /ETC/SKILLS -->
+      <section id="skills" class="panel" aria-labelledby="skills-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /ETC/SKILLS ══════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="skills-heading" class="panel-heading">SKILLS(2)</h2>
 
+          <div class="skill-groups">
+            <section aria-label="Systems skills">
+              <h3 class="skill-group-title">SYSTEMS</h3>
+              <ul class="skill-list">
+                <li>
+                  <span class="skill-name">C / LINUX / BASH</span>
+                </li>
+                <li>
+                  <span class="skill-name">PROCESS MGMT + FS</span>
+                </li>
+                <li>
+                  <span class="skill-name">CLI TOOLING</span>
+                </li>
+              </ul>
+            </section>
 
-  <footer>
-    <p>© 2025 Saurav Jyoti Kalita</p>
-  </footer>
+            <section aria-label="DevOps skills">
+              <h3 class="skill-group-title">DEVOPS</h3>
+              <ul class="skill-list">
+                <li>
+                  <span class="skill-name">GIT</span>
+                </li>
+                <li>
+                  <span class="skill-name">YAML</span>
+                </li>
+                <li>
+                  <span class="skill-name">DOCKER</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
 
+      <!-- /DEV/CONTACT -->
+      <section id="contact" class="panel" aria-labelledby="contact-heading">
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /DEV/CONTACT ═════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="contact-heading" class="panel-heading">CONTACT(1)</h2>
+
+          <div class="contact-layout">
+            <div class="contact-terminal" aria-hidden="true">
+              <div class="contact-terminal-header">
+                <span>telnet saurav.dev 23</span>
+              </div>
+              <div class="contact-terminal-body">
+                <p>$ CONNECTING...</p>
+                <p>$ NEGOTIATING CAPABILITIES...</p>
+                <p>$ LINK ESTABLISHED. SAY HELLO.</p>
+              </div>
+            </div>
+
+            <form
+              id="contact-form"
+              class="contact-form"
+              method="post"
+              action="/api/contact"
+              novalidate
+            >
+              <div class="form-row">
+                <label for="name">NAME</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  aria-required="true"
+                />
+                <p class="form-error" id="error-name"></p>
+              </div>
+
+              <div class="form-row">
+                <label for="email">EMAIL</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                />
+                <p class="form-error" id="error-email"></p>
+              </div>
+
+              <div class="form-row">
+                <label for="message">MESSAGE</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  aria-required="true"
+                ></textarea>
+                <p class="form-error" id="error-message"></p>
+              </div>
+
+              <!-- CSRF-style token placeholder for server-side validation -->
+              <input
+                type="hidden"
+                name="csrf_token"
+                value="CSRF_PLACEHOLDER_TOKEN"
+              />
+
+              <button type="submit" class="btn btn-primary" id="contact-submit">
+                SEND PACKET
+                <span class="ascii-spinner" aria-hidden="true">-</span>
+              </button>
+
+              <p
+                id="form-status"
+                class="form-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+
+          <div class="contact-direct">
+            <p>
+              DIRECT LINKS ::
+              <a href="mailto:sauravjyotikalita56@gmail.com">MAILTO:SAURAVJYOTIKALITA56@GMAIL.COM</a>
+              —
+              <a href="https://github.com/gauranga18" target="_blank" rel="noreferrer">
+                GIT://GITHUB.COM/GAURANGA18
+              </a>
+              —
+              <a href="https://www.linkedin.com/in/saurav-jyoti/" target="_blank" rel="noreferrer">
+                HTTPS://LINKEDIN.COM/IN/SAURAV-JYOTI
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
+
+      <!-- ROOT ACCESS / DEVELOPER DIARY -->
+      <section
+        id="root-access"
+        class="panel"
+        aria-labelledby="root-access-heading"
+        hidden
+      >
+        <div class="panel-frame panel-frame-top">
+          <span class="panel-corner">╔══ /ROOT/ACCESS ═════════════════════════════════════════════╗</span>
+        </div>
+        <div class="panel-body">
+          <h2 id="root-access-heading" class="panel-heading">ROOT ACCESS // DEVELOPER DIARY</h2>
+
+          <p>
+            You have discovered enough keys to unlock my private scratch space.
+            This is where ideas land before they are polished.
+          </p>
+
+          <pre aria-label="Developer diary file listing">
+/root
+├── private/
+│   └── ideas.txt
+└── scratch/
+    └── bug-hunting.log
+          </pre>
+
+          <h3 class="skill-group-title">/root/private/ideas.txt</h3>
+          <p>
+            - build a tiny deployment agent that can run on a $5 VPS and still be boring to operate.<br />
+            - explore writing more of my tooling in plain C with strict logging and zero magic.<br />
+            - keep my stack small enough that I can explain every moving part on a whiteboard.
+          </p>
+
+          <h3 class="skill-group-title">/root/scratch/bug-hunting.log</h3>
+          <p>
+            - reproduce bugs with shell scripts first, then fix the code.<br />
+            - always log context: pid, cwd, command, exit code.<br />
+            - when things get weird, strace and logs before “just restart it”.
+          </p>
+        </div>
+        <div class="panel-frame panel-frame-bottom">
+          <span class="panel-corner">╚════════════════════════════════════════════════════════════╝</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <p>© <span id="footer-year" data-key="footer-year">2025</span> SAURAV&nbsp;JYOTI&nbsp;KALITA — ALL BITS RESERVED.</p>
+      <p class="footer-meta">
+        PRINT VERSION AVAILABLE AS
+        <a href="./assets/resume-example.pdf">RESUME.TXT</a>
+        • ACCESSIBILITY STATEMENT COMING SOON
+      </p>
+      <p
+        id="access-level"
+        class="footer-meta"
+        aria-label="Hidden keys progress"
+        aria-live="polite"
+      >
+        ACCESS LEVEL: ▱▱▱▱▱▱▱▱▱▱ 0/5 KEYS
+      </p>
+    </footer>
+
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+    >
+      TOP ▲
+    </button>
+  </div>
+
+  <!-- Command palette (simulated Ctrl+P) -->
+  <div
+    id="command-palette"
+    class="command-palette"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="command-palette-title"
+    aria-hidden="true"
+  >
+    <div class="command-palette-window">
+      <header class="command-palette-header">
+        <h2 id="command-palette-title">COMMAND PALETTE</h2>
+        <button
+          type="button"
+          class="command-palette-close"
+          aria-label="Close command palette"
+        >
+          ✕
+        </button>
+      </header>
+      <div class="command-palette-body">
+        <label class="command-palette-label" for="command-input">
+          NAVIGATE BY TYPING A PATH
+        </label>
+        <input
+          id="command-input"
+          class="command-palette-input"
+          type="text"
+          autocomplete="off"
+          placeholder="~/go/to /bin/about, /var/projects, /etc/skills, /dev/contact…"
+        />
+        <ul class="command-palette-list" role="listbox" id="command-list">
+          <li role="option" data-target="#terminal-home">~/terminal-home</li>
+          <li role="option" data-target="#about">~/bin/about</li>
+          <li role="option" data-target="#projects">~/var/projects</li>
+          <li role="option" data-target="#skills">~/etc/skills</li>
+          <li role="option" data-target="#contact">~/dev/contact</li>
+        </ul>
+        <p class="command-palette-hint">
+          HINT :: ADVANCED USERS CAN TYPE <code>:set colors=amber bloom=high</code> OR <code>:root</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript: small, dependency-free modules -->
+  <script src="src/assets/js/boot.js" defer></script>
+  <script src="src/assets/js/theme-toggle.js" defer></script>
+  <script src="src/assets/js/theme-config.js" defer></script>
+  <script src="src/assets/js/navigation.js" defer></script>
+  <script src="src/assets/js/system-monitor.js" defer></script>
+  <script src="src/assets/js/weather.js" defer></script>
+  <script src="src/assets/js/root-access.js" defer></script>
+  <script src="src/assets/js/forms.js" defer></script>
 </body>
 </html>
