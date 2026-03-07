@@ -1,0 +1,19 @@
+.japi-cursor{
+  position: fixed;
+
+  width: 30px;
+  height: 30px;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  transform: translate(-50%, -50%);
+
+  image-rendering: crisp-edges;
+}
+
+.japi-cursor svg{
+  width:100%;
+  height:100%;
+}

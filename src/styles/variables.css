@@ -1,0 +1,55 @@
+:root {
+  /* ── Colors ─────────────────────────────────────── */
+  --color-bg-primary:     #060f07;
+  --color-bg-secondary:   #0a1a0d;
+  --color-bg-tertiary:    #0d2410;
+  --color-bg-card:        rgba(10, 26, 13, 0.6);
+  --color-accent-gold:    #c8860a;
+  --color-accent-amber:   #f0a500;
+  --color-accent-green:   #2d6a4f;
+  --color-accent-green-light: #52b788;
+  --color-text-primary:   #e8f5e9;
+  --color-text-secondary: #b8d8bc;
+  --color-text-muted:     #7a9e7e;
+  --color-border:         rgba(200, 134, 10, 0.2);
+  --color-border-hover:   rgba(200, 134, 10, 0.5);
+
+  /* ── Typography ──────────────────────────────────── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-body:    'DM Sans', -apple-system, sans-serif;
+
+  /* ── Spacing ─────────────────────────────────────── */
+  --section-padding: clamp(60px, 10vw, 120px);
+  --container-max:   1200px;
+  --container-pad:   clamp(20px, 5vw, 60px);
+
+  /* ── Glassmorphism ───────────────────────────────── */
+  --glass-bg:       rgba(10, 26, 13, 0.4);
+  --glass-bg-hover: rgba(10, 26, 13, 0.65);
+  --glass-border:   rgba(200, 134, 10, 0.15);
+  --glass-blur:     blur(20px);
+  --glass-blur-sm:  blur(10px);
+
+  /* ── Shadows ─────────────────────────────────────── */
+  --shadow-sm:       0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md:       0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-gold:     0 0 30px rgba(200, 134, 10, 0.15);
+  --shadow-gold-lg:  0 0 60px rgba(200, 134, 10, 0.25);
+  --glow-green:      0 0 20px rgba(45, 106, 79, 0.4);
+  --glow-gold:       0 0 20px rgba(200, 134, 10, 0.5);
+
+  /* ── Transitions ─────────────────────────────────── */
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast:   200ms;
+  --transition-med:    400ms;
+  --transition-slow:   700ms;
+
+  /* ── Z-index layers ──────────────────────────────── */
+  --z-base:    0;
+  --z-card:    10;
+  --z-nav:     100;
+  --z-cursor:  9998;
+  --z-loader:  9999;
+}

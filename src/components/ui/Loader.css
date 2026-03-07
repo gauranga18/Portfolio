@@ -1,0 +1,109 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  background: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.loader-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  opacity: 0;
+  animation: firefly-drift 3s ease-in-out infinite;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+/* ── Monogram ─────────────────────────────────────────── */
+.loader-monogram {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-monogram span {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.loader-monogram-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 134, 10, 0.35);
+  animation: spin-slow 8s linear infinite;
+}
+
+.loader-monogram-ring::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+}
+
+/* ── Sweep line ────────────────────────────────────────── */
+.loader-sweep {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  transform-origin: center;
+}
+
+/* ── Name ─────────────────────────────────────────────── */
+.loader-name {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  min-height: 1.5em;
+}
+
+.loader-typewriter {
+  position: relative;
+}
+
+.loader-caret {
+  animation: pulse-dot 0.8s step-end infinite;
+  color: var(--color-accent-gold);
+  margin-left: 1px;
+}
+
+/* ── Tagline ───────────────────────────────────────────── */
+.loader-tagline {
+  font-size: 0.8125rem;
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}

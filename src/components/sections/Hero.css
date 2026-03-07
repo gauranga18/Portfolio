@@ -1,0 +1,199 @@
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial glow bg */
+.hero-glow {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: clamp(400px, 60vw, 800px);
+  height: clamp(400px, 60vw, 800px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(45, 106, 79, 0.15) 0%,
+    rgba(200, 134, 10, 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layout grid */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* ── Text side ──────────────────────────────────────────── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-greeting {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-accent-green-light);
+  letter-spacing: 0.08em;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+}
+
+.hero-name--accent {
+  background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Role cycler */
+.hero-role {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-text-muted);
+  height: 2em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-role::before {
+  content: '//';
+  color: var(--color-accent-gold);
+  opacity: 0.5;
+}
+
+.hero-role__text {
+  display: block;
+}
+
+.hero-bio {
+  max-width: 460px;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.hero-location__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-green-light);
+  box-shadow: 0 0 6px rgba(82, 183, 136, 0.6);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* ── Canvas ─────────────────────────────────────────────── */
+.hero-canvas-wrap {
+  height: clamp(360px, 50vw, 550px);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.hero-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Mobile fallback ────────────────────────────────────── */
+.hero-fallback {
+  display: none;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-fallback__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 134, 10, 0.3);
+  animation: spin-slow 12s linear infinite;
+}
+
+.hero-fallback__inner {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 767px) {
+  .hero-canvas-wrap { display: none; }
+  .hero-fallback    { display: flex; }
+}
+
+/* ── Scroll indicator ───────────────────────────────────── */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.hero-scroll svg {
+  color: var(--color-accent-gold);
+  font-size: 1rem;
+}

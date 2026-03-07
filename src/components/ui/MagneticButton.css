@@ -1,0 +1,57 @@
+.magnetic-wrapper {
+  display: inline-block;
+}
+
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast) var(--transition-smooth),
+    box-shadow  var(--transition-fast) var(--transition-smooth),
+    color       var(--transition-fast) var(--transition-smooth);
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Primary — filled gold */
+.magnetic-btn--primary {
+  background:    linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
+  color:         #060f07;
+  border-color:  transparent;
+  font-weight:   600;
+}
+.magnetic-btn--primary:hover {
+  box-shadow: 0 8px 32px rgba(200, 134, 10, 0.45);
+}
+
+/* Secondary — outlined */
+.magnetic-btn--secondary {
+  background:    transparent;
+  color:         var(--color-accent-gold);
+  border-color:  var(--color-border);
+}
+.magnetic-btn--secondary:hover {
+  background:    rgba(200, 134, 10, 0.08);
+  border-color:  var(--color-accent-gold);
+  box-shadow:    var(--shadow-gold);
+}
+
+/* Ghost — text only */
+.magnetic-btn--ghost {
+  background:    transparent;
+  color:         var(--color-text-muted);
+  border-color:  transparent;
+}
+.magnetic-btn--ghost:hover {
+  color: var(--color-text-primary);
+}

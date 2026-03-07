@@ -1,0 +1,140 @@
+.contact {
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-watermark {
+  position: absolute;
+  right: -5%;
+  bottom: 10%;
+  width: 350px;
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Left ─────────────────────────────────────────────── */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-copy {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* Email copy button */
+.email-copy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.email-copy:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-gold);
+}
+
+.email-copy__addr {
+  flex: 1;
+  text-align: left;
+  word-break: break-all;
+}
+
+.email-copy__icon {
+  color: var(--color-accent-gold);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.email-copy__toast {
+  position: absolute;
+  top: -28px;
+  right: 12px;
+  font: 0.75rem var(--font-mono);
+  color: var(--color-accent-gold);
+  background: var(--color-bg-primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--glass-border);
+}
+
+.contact-response {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ── Social grid ──────────────────────────────────────── */
+.contact-socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: border-color 0.25s;
+  cursor: pointer;
+}
+
+.social-card:hover {
+  border-color: rgba(200, 134, 10, 0.3);
+}
+
+.social-card__icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  transition: transform 0.2s var(--transition-bounce);
+}
+
+.social-card:hover .social-card__icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.social-card__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.social-card__handle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
