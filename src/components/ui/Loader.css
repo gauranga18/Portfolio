@@ -1,3 +1,154 @@
+/* ═══════════════════════════════════════════════════════════════
+   LOADER  ·  Y2K MAXIMALIST
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+
+/* Exit: whole loader collapses upward + fades */
+@keyframes loader-exit {
+  0%   { opacity: 1; transform: translateY(0);     clip-path: inset(0 0 0 0); }
+  60%  { opacity: 1; transform: translateY(-2px);  clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; transform: translateY(-100%); clip-path: inset(0 0 100% 0); }
+}
+
+/* CRT scan-line crawl */
+@keyframes scanline-crawl {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh);  }
+}
+
+/* Horizontal glitch offset */
+@keyframes h-glitch {
+  0%, 90%, 100% { clip-path: inset(0 0 0 0);        transform: translateX(0);       }
+  91%            { clip-path: inset(15% 0 50% 0);    transform: translateX(-6px);    }
+  93%            { clip-path: inset(60% 0 10% 0);    transform: translateX(6px);     }
+  95%            { clip-path: inset(30% 0 30% 0);    transform: translateX(-3px);    }
+  97%            { clip-path: inset(5% 0 80% 0);     transform: translateX(4px);     }
+}
+
+/* RGB split ghost layers */
+@keyframes rgb-split-r {
+  0%, 88%, 100% { transform: translate(0,       0);     opacity: 0;    }
+  89%            { transform: translate(4px,  1px);      opacity: 0.55; }
+  91%            { transform: translate(-3px, -1px);     opacity: 0.4;  }
+  93%            { transform: translate(2px,  0);        opacity: 0.3;  }
+  95%            { transform: translate(0,    0);        opacity: 0;    }
+}
+@keyframes rgb-split-b {
+  0%, 88%, 100% { transform: translate(0,       0);     opacity: 0;    }
+  89%            { transform: translate(-4px, -1px);     opacity: 0.55; }
+  91%            { transform: translate(3px,  1px);      opacity: 0.4;  }
+  93%            { transform: translate(-2px, 0);        opacity: 0.3;  }
+  95%            { transform: translate(0,    0);        opacity: 0;    }
+}
+
+/* Monogram ring spin */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* Outer hex ring */
+@keyframes spin-hex {
+  0%   { transform: rotate(0deg)   scale(1);     }
+  50%  { transform: rotate(180deg) scale(1.04);  }
+  100% { transform: rotate(360deg) scale(1);     }
+}
+
+/* Corner tick marks blink */
+@keyframes corner-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.15; }
+}
+
+/* Sweep line pulse */
+@keyframes sweep-pulse {
+  0%   { transform: scaleX(0);   opacity: 0;   }
+  30%  { transform: scaleX(1);   opacity: 1;   }
+  70%  { transform: scaleX(1);   opacity: 0.6; }
+  100% { transform: scaleX(0);   opacity: 0;   }
+}
+
+/* Progress bar fill */
+@keyframes progress-fill {
+  0%   { width: 0%;   }
+  20%  { width: 18%;  }
+  45%  { width: 45%;  }
+  60%  { width: 62%;  }
+  80%  { width: 78%;  }
+  100% { width: 100%; }
+}
+
+/* Progress bar shimmer */
+@keyframes shimmer {
+  0%   { left: -60%; }
+  100% { left: 120%; }
+}
+
+/* Progress bar segment pulse */
+@keyframes seg-pulse {
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 1;    }
+}
+
+/* Firefly drift for ambient particles */
+@keyframes firefly-drift {
+  0%   { transform: translate(0, 0)            scale(0.6); opacity: 0;    }
+  15%  { opacity: 0.9; }
+  50%  { transform: translate(var(--tx), var(--ty)) scale(1.2); opacity: 0.7; }
+  85%  { opacity: 0.5; }
+  100% { transform: translate(var(--tx2), var(--ty2)) scale(0.4); opacity: 0; }
+}
+
+/* Burst star diamond */
+@keyframes burst-star {
+  0%   { transform: rotate(var(--r, 0deg)) scale(0); opacity: 0; }
+  30%  { opacity: 1; }
+  60%  { transform: rotate(calc(var(--r, 0deg) + 180deg)) scale(1); opacity: 0.8; }
+  100% { transform: rotate(calc(var(--r, 0deg) + 360deg)) scale(0); opacity: 0; }
+}
+
+/* Status dots */
+@keyframes status-dot {
+  0%, 100% { opacity: 0.2; transform: scale(0.7); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+/* Caret blink */
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Tagline char reveal */
+@keyframes char-in {
+  from { opacity: 0; transform: translateY(6px) skewX(-4deg); }
+  to   { opacity: 1; transform: translateY(0)   skewX(0); }
+}
+
+/* Noise grain overlay */
+@keyframes grain-shift {
+  0%   { background-position: 0%   0%;   }
+  20%  { background-position: 50%  30%;  }
+  40%  { background-position: 10%  80%;  }
+  60%  { background-position: 90%  20%;  }
+  80%  { background-position: 40%  60%;  }
+  100% { background-position: 0%   0%;   }
+}
+
+/* Pulse caret  (legacy alias kept) */
+@keyframes pulse-dot {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   STRUCTURAL
+   ═══════════════════════════════════════════════════════════════ */
+
 .loader {
   position: fixed;
   inset: 0;
@@ -6,12 +157,108 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Exit state: add class="loader--exit" to trigger */
+.loader--exit {
+  animation: loader-exit 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  pointer-events: none;
+}
+
+
+/* ── CRT scanline overlay ──────────────────────────────────────── */
+.loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Noise grain */
+.loader::after {
+  content: '';
+  position: absolute;
+  inset: -200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 9;
+  animation: grain-shift 0.4s steps(1) infinite;
+}
+
+
+/* ── Moving scanline beam ──────────────────────────────────────── */
+.loader-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,255,255,0.08) 20%,
+    rgba(0,255,255,0.22) 50%,
+    rgba(0,255,255,0.08) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 8;
+  animation: scanline-crawl 2.4s linear infinite;
+}
+
+
+/* ── Corner HUD brackets ───────────────────────────────────────── */
+.loader-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 6;
+}
+.loader-corner::before,
+.loader-corner::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-accent-gold);
+  border-style: solid;
+  animation: corner-blink 1.1s step-end infinite;
+}
+
+.loader-corner--tl { top: 16px;  left: 16px;  }
+.loader-corner--tr { top: 16px;  right: 16px; }
+.loader-corner--bl { bottom: 16px; left: 16px;  }
+.loader-corner--br { bottom: 16px; right: 16px; }
+
+.loader-corner--tl::before { top: 0;    left: 0;   border-width: 2px 0 0 2px; }
+.loader-corner--tl::after  { bottom: 0; right: 0;  border-width: 0 2px 2px 0; width: 10px; height: 10px; animation-delay: 0.55s; }
+
+.loader-corner--tr::before { top: 0;    right: 0;  border-width: 2px 2px 0 0; }
+.loader-corner--tr::after  { bottom: 0; left: 0;   border-width: 0 0 2px 2px; width: 10px; height: 10px; animation-delay: 0.28s; }
+
+.loader-corner--bl::before { bottom: 0; left: 0;   border-width: 0 0 2px 2px; }
+.loader-corner--bl::after  { top: 0;    right: 0;  border-width: 2px 2px 0 0; width: 10px; height: 10px; animation-delay: 0.73s; }
+
+.loader-corner--br::before { bottom: 0; right: 0;  border-width: 0 2px 2px 0; }
+.loader-corner--br::after  { top: 0;    left: 0;   border-width: 2px 0 0 2px; width: 10px; height: 10px; animation-delay: 0.42s; }
+
+
+/* ── Ambient particles ─────────────────────────────────────────── */
 .loader-particles {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 2;
 }
 
 .loader-particle {
@@ -19,91 +266,306 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: var(--color-accent-gold);
   opacity: 0;
   animation: firefly-drift 3s ease-in-out infinite;
 }
 
+
+/* ── Burst star diamonds ───────────────────────────────────────── */
+.loader-burst-star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent-gold);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0;
+  animation: burst-star 4s ease-in-out infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTENT STACK
+   ═══════════════════════════════════════════════════════════════ */
+
 .loader-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   text-align: center;
+  z-index: 5;
 }
 
-/* ── Monogram ─────────────────────────────────────────── */
+
+/* ── Monogram ──────────────────────────────────────────────────── */
 .loader-monogram {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 108px;
+  height: 108px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* Glitch animation on the whole monogram block */
+  animation: h-glitch 6s step-end infinite;
+}
+
+/* RGB ghost layers – cyan & magenta pseudo-duplicates */
+.loader-monogram::before,
+.loader-monogram::after {
+  content: attr(data-char);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  pointer-events: none;
+}
+.loader-monogram::before {
+  color: #ff00ff;
+  opacity: 0;
+  animation: rgb-split-r 6s step-end infinite;
+}
+.loader-monogram::after {
+  color: #00ffff;
+  opacity: 0;
+  animation: rgb-split-b 6s step-end infinite;
 }
 
 .loader-monogram span {
   font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
+  background: linear-gradient(135deg,
+    var(--color-accent-gold) 0%,
+    #fff8c0 40%,
+    var(--color-accent-amber) 70%,
+    var(--color-accent-gold) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   position: relative;
   z-index: 1;
+  text-shadow: none;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.55));
 }
 
+/* Outer spinning ring */
 .loader-monogram-ring {
   position: absolute;
-  inset: -4px;
+  inset: -6px;
   border-radius: 50%;
   border: 1.5px solid var(--color-accent-gold);
   animation: spin-slow 8s linear infinite;
 }
-
 .loader-monogram-ring::before {
   content: '';
   position: absolute;
-  top: -4px;
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--color-accent-gold);
+  box-shadow: 0 0 8px 3px rgba(255, 215, 0, 0.7);
+}
+.loader-monogram-ring::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-amber);
+  box-shadow: 0 0 6px 2px rgba(255, 165, 0, 0.6);
 }
 
-/* ── Sweep line ────────────────────────────────────────── */
+/* Inner counter-rotating ring */
+.loader-monogram-ring-inner {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,215,0,0.35);
+  animation: spin-reverse 5s linear infinite;
+}
+
+/* Outer hex ring (purely decorative SVG replacement via CSS) */
+.loader-monogram-hex {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-primary), var(--color-bg-primary)) padding-box,
+    conic-gradient(
+      #00ffff 0deg,
+      #ff00ff 60deg,
+      #ffd700 120deg,
+      #39ff14 180deg,
+      #ff69b4 240deg,
+      #00ffff 360deg
+    ) border-box;
+  animation: spin-hex 12s linear infinite;
+  opacity: 0.5;
+}
+
+
+/* ── Sweep line ────────────────────────────────────────────────── */
 .loader-sweep {
-  width: 200px;
+  width: 240px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--color-accent-gold) 50%,
+    transparent 100%
+  );
   transform-origin: center;
+  transform: scaleX(0);
+  animation: sweep-pulse 2.2s ease-in-out infinite;
+  box-shadow: 0 0 8px 1px rgba(255,215,0,0.4);
 }
 
-/* ── Name ─────────────────────────────────────────────── */
+
+/* ── Name ──────────────────────────────────────────────────────── */
 .loader-name {
   font-family: var(--font-mono);
   font-size: 1.125rem;
   color: var(--color-text-primary);
-  min-height: 1.5em;
+  min-height: 1.6em;
+  letter-spacing: 0.04em;
 }
 
 .loader-typewriter {
   position: relative;
+  display: inline-block;
 }
 
 .loader-caret {
-  animation: pulse-dot 0.8s step-end infinite;
+  animation: caret-blink 0.75s step-end infinite;
   color: var(--color-accent-gold);
-  margin-left: 1px;
+  margin-left: 2px;
+  text-shadow: 0 0 6px var(--color-accent-gold);
 }
 
-/* ── Tagline ───────────────────────────────────────────── */
+
+/* ── Progress bar ──────────────────────────────────────────────── */
+.loader-progress-wrap {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.loader-progress-bar {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    var(--color-accent-gold) 0%,
+    #fff8a0 50%,
+    var(--color-accent-amber) 100%
+  );
+  border-radius: 2px;
+  width: 0%;
+  animation: progress-fill 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  position: relative;
+}
+
+/* Shimmer on the fill */
+.loader-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.55) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.1s ease-in-out infinite;
+}
+
+/* Segmented tick marks over the bar */
+.loader-progress-ticks {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 0;
+  pointer-events: none;
+}
+.loader-progress-tick {
+  flex: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.35);
+}
+.loader-progress-tick:last-child { border-right: none; }
+
+/* Label row */
+.loader-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: rgba(255,215,0,0.55);
+  letter-spacing: 0.08em;
+}
+
+
+/* ── Status dots ───────────────────────────────────────────────── */
+.loader-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loader-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  animation: status-dot 1.1s ease-in-out infinite;
+}
+.loader-status-dot:nth-child(2) { animation-delay: 0.18s; background: #ff00ff; }
+.loader-status-dot:nth-child(3) { animation-delay: 0.36s; background: #00ffff; }
+
+.loader-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+
+/* ── Tagline ───────────────────────────────────────────────────── */
 .loader-tagline {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-family: var(--font-body);
   color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Span-per-character stagger reveal (JS adds <span> per char) */
+.loader-tagline span {
+  display: inline-block;
+  opacity: 0;
+  animation: char-in 0.3s ease forwards;
 }
