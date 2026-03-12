@@ -15,28 +15,28 @@ const SOCIALS = [
     handle:   'gauranga18',
     icon:     FaGithub,
     href:     PERSONAL.github,
-    color:    '#c8860a',
+    color:    'var(--color-accent-gold)',
   },
   {
     label:    'LinkedIn',
     handle:   'saurav-jyoti',
     icon:     FaLinkedin,
     href:     PERSONAL.linkedin,
-    color:    '#0a66c2',
+    color:    'var(--color-accent-gold)',
   },
   {
     label:    'Instagram',
     handle:   'saurav_.30__',
     icon:     FaInstagram,
     href:     PERSONAL.instagram,
-    color:    '#e1306c',
+    color:    'var(--color-accent-gold)',
   },
   {
     label:    'Email',
     handle:   PERSONAL.email,
     icon:     FaEnvelope,
     href:     `mailto:${PERSONAL.email}`,
-    color:    '#52b788',
+    color:    'var(--color-accent-gold)',
   },
 ]
 
@@ -59,11 +59,11 @@ const Contact = () => {
         <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M20,120 Q40,60 80,50 Q120,40 150,70 Q180,100 220,90 Q260,80 280,110 Q270,150 240,160 Q200,170 160,155 Q120,140 80,155 Q50,165 25,145 Z"
-            stroke="rgba(200,134,10,0.08)"
+            stroke="var(--color-accent-light)"
             strokeWidth="2"
-            fill="rgba(45,106,79,0.03)"
+            fill="rgba(255,255,255,0.02)"
           />
-          <text x="140" y="120" fontSize="10" fill="rgba(200,134,10,0.12)" textAnchor="middle" fontFamily="serif">Assam</text>
+          <text x="140" y="120" fontSize="10" fill="var(--color-accent-light)" textAnchor="middle" fontFamily="serif">Assam</text>
         </svg>
       </div>
 

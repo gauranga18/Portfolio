@@ -1,23 +1,33 @@
 :root {
-  /* ── Colors ─────────────────────────────────────── */
-  --color-bg-primary:     #060f07;
-  --color-bg-secondary:   #0a1a0d;
-  --color-bg-tertiary:    #0d2410;
-  --color-bg-card:        rgba(10, 26, 13, 0.6);
-  --color-accent-gold:    #c8860a;
-  --color-accent-amber:   #f0a500;
-  --color-accent-green:   #2d6a4f;
-  --color-accent-green-light: #52b788;
-  --color-text-primary:   #e8f5e9;
-  --color-text-secondary: #b8d8bc;
-  --color-text-muted:     #7a9e7e;
-  --color-border:         rgba(200, 134, 10, 0.2);
-  --color-border-hover:   rgba(200, 134, 10, 0.5);
+  /* ── Colors (Y2K cyber/Drift) ─────────────────────── */
+  /* primary background and surfaces */
+  --color-bg-primary:     #0a0a0a;
+  --color-bg-secondary:   #101010;
+  --color-bg-tertiary:    #141414;
+  --color-bg-card:        rgba(20, 20, 20, 0.6);
+
+  /* accents (use sparingly) */
+  --color-accent-gold:    #39ff14; /* neon green */
+  --color-accent-amber:   #a855f7; /* neon purple */
+  --color-accent-green:   #ff6a00; /* Tokyo orange */
+  --color-accent-light:   rgba(57, 255, 20, 0.2);
+  /* helper RGB values for generating semi-transparent variants */
+  --color-accent-gold-rgb: 57, 255, 20;
+  --color-accent-amber-rgb: 168, 85, 247;
+  --color-accent-green-rgb: 255, 106, 0;
+
+  --color-border:         rgba(57, 255, 20, 0.3);
+  --color-border-hover:   rgba(57, 255, 20, 0.6);
+
+  /* text */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-muted:     #888888;
 
   /* ── Typography ──────────────────────────────────── */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
-  --font-body:    'DM Sans', -apple-system, sans-serif;
+  --font-display: 'JetBrains Mono', 'Space Mono', 'IBM Plex Mono', monospace;
+  --font-mono:    'JetBrains Mono', 'Space Mono', 'IBM Plex Mono', monospace;
+  --font-body:    'JetBrains Mono', 'Space Mono', 'IBM Plex Mono', monospace;
 
   /* ── Spacing ─────────────────────────────────────── */
   --section-padding: clamp(60px, 10vw, 120px);
@@ -27,17 +37,17 @@
   /* ── Glassmorphism ───────────────────────────────── */
   --glass-bg:       rgba(10, 26, 13, 0.4);
   --glass-bg-hover: rgba(10, 26, 13, 0.65);
-  --glass-border:   rgba(200, 134, 10, 0.15);
+  --glass-border:   var(--color-accent-light);
   --glass-blur:     blur(20px);
   --glass-blur-sm:  blur(10px);
 
   /* ── Shadows ─────────────────────────────────────── */
   --shadow-sm:       0 2px 12px rgba(0, 0, 0, 0.4);
   --shadow-md:       0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-gold:     0 0 30px rgba(200, 134, 10, 0.15);
-  --shadow-gold-lg:  0 0 60px rgba(200, 134, 10, 0.25);
-  --glow-green:      0 0 20px rgba(45, 106, 79, 0.4);
-  --glow-gold:       0 0 20px rgba(200, 134, 10, 0.5);
+  --shadow-gold:     0 0 30px var(--color-accent-light);
+  --shadow-gold-lg:  0 0 60px var(--color-accent-light);
+  --glow-green:      0 0 20px var(--color-accent-amber);
+  --glow-gold:       0 0 20px var(--color-accent-gold);
 
   /* ── Transitions ─────────────────────────────────── */
   --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);

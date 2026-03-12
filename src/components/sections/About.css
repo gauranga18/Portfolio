@@ -57,7 +57,7 @@
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 1px dashed rgba(200, 134, 10, 0.25);
+  border: 1px dashed var(--color-accent-light);
   animation: spin-slow 20s linear infinite;
 }
 
@@ -97,7 +97,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #52b788;
+  background: var(--color-accent-gold);
   animation: pulse-dot 2s ease-in-out infinite;
 }
 

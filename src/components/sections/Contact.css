@@ -112,7 +112,7 @@
 }
 
 .social-card:hover {
-  border-color: rgba(200, 134, 10, 0.3);
+  border-color: var(--color-accent-light);
 }
 
 .social-card__icon {

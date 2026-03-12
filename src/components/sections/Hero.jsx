@@ -68,13 +68,14 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="hero-greeting">
+            <span className="hero-greeting terminal-line" style={{animationDelay: '0.2s'}}>
               Hi 👋, I'm
             </span>
           </motion.div>
 
           <motion.h1
-            className="hero-name"
+            className="hero-name terminal-line"
+            style={{animationDelay: '0.5s'}}
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -93,7 +94,8 @@ const Hero = () => {
           </motion.div>
 
           <motion.p
-            className="hero-bio"
+            className="hero-bio terminal-line"
+            style={{animationDelay: '1s'}}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.6 }}

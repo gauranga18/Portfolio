@@ -1,16 +1,14 @@
 .japi-cursor{
   position: fixed;
-
-  width: 30px;
-  height: 30px;
-
+  width: 10px;
+  height: 10px;
   pointer-events: none;
-
-  z-index: 9999;
-
+  z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
+}
 
-  image-rendering: crisp-edges;
+.japi-cursor svg {
+  filter: drop-shadow(0 0 4px var(--color-accent-gold));
 }
 
 .japi-cursor svg{

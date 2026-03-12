@@ -12,6 +12,15 @@
   padding: 36px 32px;
   position: relative;
   overflow: hidden;
+  background: var(--color-bg-secondary);
+  border: 1px solid #222;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--color-accent-amber);
+  box-shadow: 0 0 12px var(--color-accent-amber);
+  transform: translateY(-4px);
 }
 
 /* Number */
@@ -19,7 +28,7 @@
   font-family: var(--font-mono);
   font-size: 3.5rem;
   font-weight: 700;
-  color: rgba(200, 134, 10, 0.12);
+  color: rgba(var(--color-accent-gold-rgb), 0.12);
   position: absolute;
   top: 16px;
   right: 24px;
@@ -94,7 +103,7 @@
   background: linear-gradient(
     135deg,
     transparent 50%,
-    rgba(200, 134, 10, 0.06) 50%
+    var(--color-accent-light) 50%
   );
   pointer-events: none;
 }

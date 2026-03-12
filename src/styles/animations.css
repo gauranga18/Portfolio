@@ -16,8 +16,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(200, 134, 10, 0.2); }
-  50%       { box-shadow: 0 0 30px rgba(200, 134, 10, 0.5); }
+  0%, 100% { box-shadow: 0 0 10px var(--color-accent-light); }
+  50%       { box-shadow: 0 0 30px var(--color-accent-gold); }
 }
 
 @keyframes pulse-dot {

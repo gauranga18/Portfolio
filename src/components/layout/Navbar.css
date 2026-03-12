@@ -5,17 +5,15 @@
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  transition:
-    background var(--transition-med) var(--transition-smooth),
-    border-color var(--transition-med) var(--transition-smooth);
-  border-bottom: 1px solid transparent;
+  background: var(--color-bg-primary);
+  transition: background var(--transition-med) var(--transition-smooth);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .navbar--scrolled {
-  background: rgba(6, 15, 7, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: var(--glass-border);
+  background: var(--color-bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .navbar__inner {
@@ -40,10 +38,8 @@
   font-family: var(--font-mono);
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent-gold);
+  text-shadow: 0 0 6px var(--color-accent-gold);
   letter-spacing: 0.05em;
 }
 
@@ -64,27 +60,45 @@
 }
 
 .navbar__link {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   letter-spacing: 0.05em;
   padding: 6px 12px;
-  border-radius: 6px;
-  transition:
-    color var(--transition-fast) var(--transition-smooth),
-    background var(--transition-fast) var(--transition-smooth);
+  transition: color var(--transition-fast) var(--transition-smooth);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-accent-gold);
+  transition: width 0.3s ease, background 0.3s ease;
 }
 
 .navbar__link:hover {
   color: var(--color-text-primary);
-  background: rgba(200, 134, 10, 0.06);
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+  background: var(--color-accent-amber);
 }
 
 .navbar__link--active {
   color: var(--color-accent-gold) !important;
+}
+
+.navbar__link--active::after {
+  width: 100%;
+  box-shadow: 0 0 8px var(--color-accent-gold);
 }
 
 /* ── CTA ───────────────────────────────────────────────── */
@@ -104,8 +118,8 @@
 }
 
 .navbar__cta:hover {
-  background: rgba(200, 134, 10, 0.08);
-  box-shadow: var(--shadow-gold);
+  background: var(--color-accent-light);
+  box-shadow: 0 0 8px var(--color-accent-gold);
 }
 
 @media (min-width: 900px) { .navbar__cta { display: flex; align-items: center; } }

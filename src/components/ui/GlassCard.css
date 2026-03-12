@@ -16,7 +16,7 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(200, 134, 10, 0.03) 0%,
+    rgba(255,255,255,0.02) 0%,
     transparent 60%
   );
   pointer-events: none;

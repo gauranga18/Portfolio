@@ -15,9 +15,10 @@ const ParticleField = () => {
     const colors    = new Float32Array(PARTICLE_COUNT * 3)
     const phases    = new Float32Array(PARTICLE_COUNT)
 
-    // Gold and green colors
-    const gold  = new THREE.Color('#f0a500')
-    const green = new THREE.Color('#2d6a4f')
+    // pick up current accent colours from CSS vars so the palette is live
+    const rootStyles = getComputedStyle(document.documentElement)
+    const gold  = new THREE.Color(rootStyles.getPropertyValue('--color-accent-gold').trim())
+    const green = new THREE.Color(rootStyles.getPropertyValue('--color-accent-green').trim())
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const i3 = i * 3

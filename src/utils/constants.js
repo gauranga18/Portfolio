@@ -23,18 +23,18 @@ export const PERSONAL = {
 
 // ── Skills ────────────────────────────────────────────────
 export const SKILLS = [
-  { name: 'C',       icon: 'SiC',          level: 90, tag: 'Primary',   color: '#659ad2' },
-  { name: 'Java',    icon: 'FaJava',       level: 65, tag: 'Secondary', color: '#f89820' },
-  { name: 'Linux',   icon: 'FaLinux',      level: 85, tag: 'OS',        color: '#fcc624' },
-  { name: 'Git',     icon: 'FaGitAlt',     level: 85, tag: 'VCS',       color: '#f05032' },
-  { name: 'Docker',  icon: 'FaDocker',     level: 70, tag: 'DevOps',    color: '#2496ed' },
-  { name: 'Make',    icon: 'SiMake',        level: 75, tag: 'Build',     color: '#c8860a' },
-  { name: 'YAML',    icon: 'SiYaml',       level: 75, tag: 'Config',    color: '#cb171e' },
-  { name: 'Bash',    icon: 'SiGnubash',    level: 78, tag: 'Scripting', color: '#4eaa25' },
-  { name: 'DevOps',  icon: 'SiAnsible',    level: 55, tag: 'Learning',  color: '#e00' },
-  { name: 'Valgrind',icon: 'FaBug',        level: 70, tag: 'Debugging', color: '#7a9e7e' },
-  { name: 'GDB',     icon: 'SiGdb',        level: 72, tag: 'Debugging', color: '#c8860a' },
-  { name: 'Python',  icon: 'FaPython',     level: 60, tag: 'Scripting', color: '#3776ab' },
+  { name: 'C',       icon: 'SiC',          level: 90, tag: 'Primary',   color: '#39ff14' },
+  { name: 'Java',    icon: 'FaJava',       level: 65, tag: 'Secondary', color: '#39ff14' },
+  { name: 'Linux',   icon: 'FaLinux',      level: 85, tag: 'OS',        color: '#39ff14' },
+  { name: 'Git',     icon: 'FaGitAlt',     level: 85, tag: 'VCS',       color: '#39ff14' },
+  { name: 'Docker',  icon: 'FaDocker',     level: 70, tag: 'DevOps',    color: '#39ff14' },
+  { name: 'Make',    icon: 'SiMake',        level: 75, tag: 'Build',     color: '#39ff14' },
+  { name: 'YAML',    icon: 'SiYaml',       level: 75, tag: 'Config',    color: '#39ff14' },
+  { name: 'Bash',    icon: 'SiGnubash',    level: 78, tag: 'Scripting', color: '#39ff14' },
+  { name: 'DevOps',  icon: 'SiAnsible',    level: 55, tag: 'Learning',  color: '#39ff14' },
+  { name: 'Valgrind',icon: 'FaBug',        level: 70, tag: 'Debugging', color: '#39ff14' },
+  { name: 'GDB',     icon: 'SiGdb',        level: 72, tag: 'Debugging', color: '#39ff14' },
+  { name: 'Python',  icon: 'FaPython',     level: 60, tag: 'Scripting', color: '#39ff14' },
 ]
 
 // ── Projects ──────────────────────────────────────────────

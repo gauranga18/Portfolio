@@ -23,27 +23,26 @@
   white-space: nowrap;
 }
 
-/* Primary — filled gold */
+/* Primary — solid neon green */
 .magnetic-btn--primary {
-  background:    linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-amber));
-  color:         #060f07;
-  border-color:  transparent;
-  font-weight:   600;
+  background: var(--color-accent-gold);
+  color: #000;
+  border-color: transparent;
+  font-weight: 600;
 }
 .magnetic-btn--primary:hover {
-  box-shadow: 0 8px 32px rgba(200, 134, 10, 0.45);
+  box-shadow: 0 0 12px var(--color-accent-gold);
 }
 
-/* Secondary — outlined */
+/* Secondary — outlined neon */
 .magnetic-btn--secondary {
-  background:    transparent;
-  color:         var(--color-accent-gold);
-  border-color:  var(--color-border);
+  background: transparent;
+  color: var(--color-accent-gold);
+  border-color: var(--color-accent-light);
 }
 .magnetic-btn--secondary:hover {
-  background:    rgba(200, 134, 10, 0.08);
-  border-color:  var(--color-accent-gold);
-  box-shadow:    var(--shadow-gold);
+  background: var(--color-accent-light);
+  box-shadow: 0 0 8px var(--color-accent-gold);
 }
 
 /* Ghost — text only */
