@@ -7,12 +7,16 @@ export function useScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sy = window.scrollY
+      const sy        = window.scrollY
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
       setScrollY(sy)
       setProgress(maxScroll > 0 ? sy / maxScroll : 0)
       setIsScrolled(sy > 60)
     }
+
+    // Fire once on mount so the bar initialises correctly if page is pre-scrolled
+    handleScroll()
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])

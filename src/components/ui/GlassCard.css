@@ -1,27 +1,286 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLASS CARD  ·  Y2K HOLOGRAPHIC
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+
+/* Iridescent holo shimmer sweep */
+@keyframes holo-sweep {
+  0%   { transform: translateX(-120%) skewX(-12deg); opacity: 0;    }
+  8%   { opacity: 1; }
+  60%  { opacity: 0.6; }
+  100% { transform: translateX(220%)  skewX(-12deg); opacity: 0;    }
+}
+
+/* Corner pip orbit */
+@keyframes pip-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Edge scan line — horizontal crawl */
+@keyframes edge-scan {
+  0%   { left: -10%; opacity: 0;   }
+  5%   { opacity: 1; }
+  95%  { opacity: 0.7; }
+  100% { left: 110%; opacity: 0;   }
+}
+
+/* Subtle breathe on the inner glow */
+@keyframes inner-glow-breathe {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.75; }
+}
+
+/* RGB ghost flicker — fires on hover via animation-play-state */
+@keyframes rgb-flicker {
+  0%, 89%, 100% { opacity: 0; transform: translate(0, 0); }
+  90%  { opacity: 0.4; transform: translate( 3px,  1px); }
+  92%  { opacity: 0.3; transform: translate(-2px, -1px); }
+  94%  { opacity: 0.2; transform: translate( 1px,  0px); }
+  96%  { opacity: 0;   transform: translate( 0,    0);   }
+}
+
+/* Corner bracket blink */
+@keyframes bracket-blink {
+  0%, 48% { opacity: 0.7; }
+  49%, 100% { opacity: 0.12; }
+}
+
+/* Noise grain */
+@keyframes grain {
+  0%   { background-position:   0%   0%; }
+  25%  { background-position:  60%  40%; }
+  50%  { background-position: 100% 100%; }
+  75%  { background-position:  20%  80%; }
+  100% { background-position:   0%   0%; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE CARD
+   ═══════════════════════════════════════════════════════════════ */
+
 .glass-card {
   background:    var(--glass-bg);
   border:        1px solid var(--glass-border);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-radius: 16px;
-  transition: border-color var(--transition-med) var(--transition-smooth),
-              box-shadow   var(--transition-med) var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+
+  /* Smooth all the things */
+  transition:
+    border-color  var(--transition-med, 0.25s) var(--transition-smooth, ease),
+    box-shadow    var(--transition-med, 0.25s) var(--transition-smooth, ease),
+    transform     var(--transition-med, 0.25s) var(--transition-smooth, ease);
 }
 
+
+/* ── Layer 1: base inner gradient ─────────────────────────────── */
 .glass-card::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.02) 0%,
-    transparent 60%
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(255, 215,   0, 0.018) 40%,
+    transparent 65%
   );
   pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
 }
 
+/* ── Layer 2: noise grain overlay ─────────────────────────────── */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+  animation: grain 0.6s steps(1) infinite;
+}
+
+
+/* ── Holo shimmer strip (fires on hover) ──────────────────────── */
+.glass-card-shimmer {
+  position: absolute;
+  inset-block: 0;
+  left: -30%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 20%,
+    rgba(0,   255, 255, 0.07) 40%,
+    rgba(255,   0, 255, 0.06) 60%,
+    rgba(255, 215,   0, 0.05) 80%,
+    transparent 100%
+  );
+  transform: skewX(-12deg);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  animation: holo-sweep 2.8s ease-in-out infinite;
+  animation-play-state: paused;
+  border-radius: inherit;
+}
+.glass-card:hover .glass-card-shimmer {
+  animation-play-state: running;
+}
+
+
+/* ── Edge scan line ────────────────────────────────────────────── */
+.glass-card-scan {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 12%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  animation: edge-scan 3.5s ease-in-out infinite;
+  animation-play-state: paused;
+  box-shadow: 0 0 6px 1px rgba(0, 255, 255, 0.25);
+}
+.glass-card:hover .glass-card-scan {
+  animation-play-state: running;
+}
+
+
+/* ── Inner chromatic glow ring ─────────────────────────────────── */
+.glass-card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: transparent;
+  /* Conic gradient border via clip trick */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.glass-card:hover .glass-card-glow {
+  opacity: 1;
+  animation: inner-glow-breathe 2s ease-in-out infinite;
+}
+/* We fake the gradient border with a box-shadow stack */
+.glass-card:hover .glass-card-glow {
+  box-shadow:
+    inset 0  0 12px  0 rgba(255, 215,   0, 0.10),
+    inset 0  0 24px  0 rgba(  0, 255, 255, 0.06),
+    inset 0  0 36px  0 rgba(255,   0, 255, 0.04);
+}
+
+
+/* ── HUD corner brackets ───────────────────────────────────────── */
+.glass-card-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.glass-card:hover .glass-card-corner {
+  opacity: 1;
+}
+/* Individual positioning */
+.glass-card-corner--tl { top: 6px;    left: 6px;    }
+.glass-card-corner--tr { top: 6px;    right: 6px;   }
+.glass-card-corner--bl { bottom: 6px; left: 6px;    }
+.glass-card-corner--br { bottom: 6px; right: 6px;   }
+
+/* Single border lines per corner */
+.glass-card-corner--tl { border-top:    1.5px solid var(--color-accent-gold); border-left:   1.5px solid var(--color-accent-gold); }
+.glass-card-corner--tr { border-top:    1.5px solid var(--color-accent-gold); border-right:  1.5px solid var(--color-accent-gold); }
+.glass-card-corner--bl { border-bottom: 1.5px solid var(--color-accent-gold); border-left:   1.5px solid var(--color-accent-gold); }
+.glass-card-corner--br { border-bottom: 1.5px solid var(--color-accent-gold); border-right:  1.5px solid var(--color-accent-gold); }
+
+/* Pip dot on TL corner */
+.glass-card-corner--tl::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  box-shadow: 0 0 6px 2px rgba(255, 215, 0, 0.7);
+  animation: bracket-blink 1.2s step-end infinite;
+}
+/* Pip dot on BR corner — offset timing */
+.glass-card-corner--br::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00ffff;
+  box-shadow: 0 0 5px 2px rgba(0, 255, 255, 0.7);
+  animation: bracket-blink 1.2s step-end infinite 0.6s;
+}
+
+
+/* ── RGB ghost duplicate (chromatic aberration on hover) ──────── */
+.glass-card-rgb {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  animation: rgb-flicker 5s step-end infinite;
+  animation-play-state: paused;
+}
+.glass-card:hover .glass-card-rgb {
+  animation-play-state: running;
+}
+.glass-card-rgb--r {
+  border: 1px solid rgba(255,  0, 255, 0.25);
+}
+.glass-card-rgb--b {
+  border: 1px solid rgba(  0, 255, 255, 0.25);
+  animation-delay: 0.05s;
+}
+
+
+/* ── Hover state ───────────────────────────────────────────────── */
 .glass-card:hover {
-  box-shadow: var(--shadow-gold);
+  box-shadow:
+    var(--shadow-gold, 0 0 0 1px rgba(200,134,10,0.3)),
+    0  8px 32px -8px rgba(255, 215, 0, 0.18),
+    0  0   0   1px rgba(255, 215, 0, 0.12),
+    0  0  20px -4px rgba(  0, 255, 255, 0.10);
+}
+.glass-card:hover::before {
+  opacity: 1.4; /* Brightens the base gradient */
+}
+
+
+/* ── Active (click) feedback ───────────────────────────────────── */
+.glass-card:active {
+  box-shadow:
+    0 2px 12px -4px rgba(255, 215, 0, 0.25),
+    0 0   0   1px rgba(255, 215, 0, 0.20);
 }

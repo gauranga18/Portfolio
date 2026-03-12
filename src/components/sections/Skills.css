@@ -1,54 +1,211 @@
-.skills {
-  background: var(--color-bg-primary);
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS · SOLAR SYSTEM
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1;   }
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 18px;
+@keyframes hint-drift {
+  0%, 100% { transform: translateY(0);   opacity: 0.35; }
+  50%       { transform: translateY(5px); opacity: 0.6;  }
 }
 
-.skill-card {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-accent-gold);
-  border-radius: 8px;
-  padding: 22px 18px;
+@keyframes counter-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Section wrapper — tall for scroll-driving ────────────────── */
+.solar-section {
+  position: relative;
+  height: 500vh;
+  background: #03030E;
+}
+
+/* ── Sticky fullscreen viewport ───────────────────────────────── */
+.solar-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Section heading ──────────────────────────────────────────── */
+.solar-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(24px, 5vw, 56px) clamp(24px, 6vw, 64px) 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Canvas fills the sticky frame ───────────────────────────── */
+.solar-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width:  100% !important;
+  height: 100% !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HUD ELEMENTS
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Bottom info area ─────────────────────────────────────────── */
+.solar-hud-bottom {
+  position: absolute;
+  bottom: clamp(32px, 6vh, 72px);
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 18px;
+  z-index: 10;
+  pointer-events: none;
+  min-width: 260px;
   text-align: center;
-  gap: 10px;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  perspective: 800px;
 }
 
-.skill-card:hover {
-  transform: rotateY(3deg) rotateX(2deg);
-  box-shadow: 0 0 12px var(--color-accent-gold);
-  border-color: var(--color-accent-amber);
+/* ── Active skill card ────────────────────────────────────────── */
+.solar-skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
-.skill-icon {
-  font-size: 2.2rem;
-  margin-bottom: 4px;
-  transition: transform 0.2s var(--transition-bounce);
+.solar-skill-name {
+  font-family:    var(--font-mono, 'Courier New', monospace);
+  font-size:      clamp(1.5rem, 3.5vw, 2rem);
+  font-weight:    700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height:    1;
+  /* color & textShadow set inline */
 }
 
-.skill-card:hover .skill-icon {
-  transform: scale(1.2);
+.solar-skill-sub {
+  font-family:    var(--font-mono, 'Courier New', monospace);
+  font-size:      0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          rgba(255, 255, 255, 0.35);
 }
 
-.skill-name {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 600;
-
-  color: var(--color-text-primary);
+/* ── Dot navigator ────────────────────────────────────────────── */
+.solar-dots {
+  display:     flex;
+  gap:         10px;
+  align-items: center;
 }
 
-.skill-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+.solar-dot {
+  width:         6px;
+  height:        6px;
+  border-radius: 50%;
+  background:    rgba(255, 255, 255, 0.2);
+  /* scale / color / shadow driven by framer-motion inline */
+}
 
-  opacity: 0.7;
+/* ── Top-right counter ────────────────────────────────────────── */
+.solar-counter {
+  position:    absolute;
+  top:         clamp(20px, 4vw, 36px);
+  right:       clamp(20px, 4vw, 40px);
+  display:     flex;
+  align-items: baseline;
+  gap:         4px;
+  z-index:     10;
+  pointer-events: none;
+  animation:   counter-in 0.4s ease forwards;
+  animation-delay: 0.5s;
+  opacity:     0;
+}
+
+.solar-counter-idx {
+  font-family:    var(--font-mono, monospace);
+  font-size:      1.35rem;
+  font-weight:    700;
+  color:          rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.04em;
+  line-height:    1;
+}
+
+.solar-counter-sep {
+  font-family: var(--font-mono, monospace);
+  font-size:   0.85rem;
+  color:       rgba(255, 255, 255, 0.22);
+}
+
+.solar-counter-total {
+  font-family:    var(--font-mono, monospace);
+  font-size:      0.85rem;
+  color:          rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.04em;
+}
+
+/* ── Scroll hint ──────────────────────────────────────────────── */
+.solar-scroll-hint {
+  position:       absolute;
+  bottom:         clamp(16px, 3vh, 28px);
+  right:          clamp(20px, 4vw, 40px);
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            4px;
+  font-family:    var(--font-mono, monospace);
+  font-size:      0.55rem;
+  letter-spacing: 0.14em;
+  color:          rgba(255, 255, 255, 0.28);
+  text-transform: uppercase;
+  z-index:        10;
+  pointer-events: none;
+}
+
+.solar-hint-arrow {
+  font-size: 0.85rem;
+  color:     rgba(255, 255, 255, 0.35);
+  display:   block;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .solar-section {
+    height: 400vh; /* slightly shorter on mobile */
+  }
+  .solar-skill-name {
+    font-size: 1.25rem;
+  }
+  .solar-skill-sub {
+    font-size: 0.6rem;
+  }
+  .solar-counter-idx {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .solar-section {
+    height: 350vh;
+  }
+}
+
+/* ── Reduced-motion fallback ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .solar-section {
+    height: 100vh; /* disable scroll-driving */
+  }
+  .solar-sticky {
+    position: relative;
+  }
 }

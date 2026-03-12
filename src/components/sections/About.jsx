@@ -64,22 +64,6 @@ const About = () => {
                 Assam, India
               </div>
 
-              {/* Floating skill badges */}
-              {['C', 'Linux', 'Docker'].map((skill, i) => (
-                <motion.div
-                  key={skill}
-                  className="about-badge"
-                  style={{
-                    top:  `${20 + i * 28}%`,
-                    right: '-18px',
-                    animationDelay: `${i * 0.5}s`,
-                  }}
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.6 }}
-                >
-                  {skill}
-                </motion.div>
-              ))}
             </GlassCard>
 
             {/* Status indicator */}
